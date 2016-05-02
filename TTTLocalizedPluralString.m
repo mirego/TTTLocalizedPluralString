@@ -1,4 +1,4 @@
-// TTTLocalizedPluralString.m
+// TTTLocalizedPluralString.h
 //
 // Copyright (c) 2011 Mattt Thompson (http://mattt.me)
 //
@@ -351,7 +351,7 @@ static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
         case 13:
         case 14:
             break;
-            
+
         default:
             switch (mod10) {
                 case 1:
@@ -363,7 +363,7 @@ static NSString * TTTRussianPluralRuleForCount(NSUInteger count) {
                 default:
                     break;
             }
-			
+
     }
 
     return kTTTManyPluralRule;
@@ -418,7 +418,7 @@ static NSString * TTTUkrainianPluralRuleForCount(NSUInteger count) {
         case 13:
         case 14:
             break;
-            
+
         default:
             switch (mod10) {
                 case 1:
@@ -430,7 +430,7 @@ static NSString * TTTUkrainianPluralRuleForCount(NSUInteger count) {
                 default:
                     break;
             }
-			
+
     }
 
     return kTTTManyPluralRule;
@@ -521,6 +521,6 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
         NSLog(@"Unsupported language: %@", languageCode);
         return nil;
     }
-
-    return [NSString stringWithFormat:@"%%d %@ (plural rule: %@)", singular, pluralRule];
+    
+    return [NSString stringWithFormat:@"%@_%@", singular, pluralRule];
 }
