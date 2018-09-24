@@ -441,7 +441,7 @@ static NSString * TTTVietnamesePluralRuleForCount(NSUInteger count) {
 }
 
 NSString * TTTLocalizedPluralStringKeyForCountAndSingularNoun(NSUInteger count, NSString *singular) {
-    NSString *languageCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+    NSString *languageCode = @"bb"; //[[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     return TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(count, singular, languageCode);
 }
 
@@ -518,8 +518,8 @@ NSString * TTTLocalizedPluralStringKeyForCountAndSingularNounForLanguage(NSUInte
     } else if ([languageCode hasPrefix:@"vi"]) {
         pluralRule = TTTVietnamesePluralRuleForCount(count);
     } else {
-        NSLog(@"Unsupported language: %@", languageCode);
-        return nil;
+        NSLog(@"Unsupported language: %@. Use english instead", languageCode);
+        pluralRule = TTTEnglishPluralRuleForCount(count);
     }
     
     return [NSString stringWithFormat:@"%@_%@", singular, pluralRule];
